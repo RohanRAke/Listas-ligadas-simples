@@ -5,12 +5,12 @@ public class ListaSimple {
     Node top;
 
     // Method to insert the first node in the list
-    public boolean insertaPrimerNodo(String dato) {
+    public boolean insertFirstNode(String data) {
         // Check if the list is empty
         if (top == null) {
             // Create a new node and make it the top
             top = new Node();
-            top.name = dato;
+            top.name = data;
             top.next = null;
             return true;
         } else {
@@ -20,10 +20,10 @@ public class ListaSimple {
     }
 
     // Method to insert a node before the first node
-    public void insertaAntesPrimerNodo(String nombre) {
+    public void insertBeforeFirstNode(String name) {
         // Create a new node
         Node temp = new Node();
-        temp.name = nombre;
+        temp.name = name;
         // Insert the new node at the beginning
         temp.next = this.top;
         this.top = temp;
@@ -31,10 +31,10 @@ public class ListaSimple {
     }
 
     // Method to insert a node at the end of the list
-    public void insertaAlFinal(String nombre) {
+    public void insertAtEnd(String name) {
         // Create a new node
         Node temp = new Node();
-        temp.name = nombre;
+        temp.name = name;
         temp.next = null;
 
         Node temp2 = this.top;
@@ -49,7 +49,7 @@ public class ListaSimple {
     }
 
     // Method to calculate the position of a node in the list
-    public int getPositionOfNode(Node startNode, String key) {
+    public int getNodePosition(Node startNode, String key) {
         int position = 1;
         Node temp = startNode;
         // Traverse the list until the key is found
@@ -62,10 +62,10 @@ public class ListaSimple {
     }
 
     // Method to insert a node between nodes with specified names
-    public boolean insertaEntreNodos(String nombre, String buscado) {
+    public boolean insertBetweenNodes(String name, String searchName) {
         // Create a new node
         Node temp = new Node();
-        temp.name = nombre;
+        temp.name = name;
 
         // Handle the case when the list is empty
         if (this.top == null) {
@@ -77,14 +77,14 @@ public class ListaSimple {
         Node temp2 = this.top;
 
         // Handle the case when the first node matches the search key
-        if (temp2.name.equals(buscado)) {
+        if (temp2.name.equals(searchName)) {
             temp.next = temp2.next;
             temp2.next = temp;
             return true;
         }
 
         // Traverse the list to find the node with the specified name
-        while (temp2 != null && !temp2.name.equals(buscado)) {
+        while (temp2 != null && !temp2.name.equals(searchName)) {
             temp2 = temp2.next;
         }
 
@@ -100,7 +100,7 @@ public class ListaSimple {
     }
 
     // Method to print the elements of the linked list
-    public void imprimir() {
+    public void print() {
         // Traverse the list and print each node's name
         for (Node temp = this.top; temp != null; temp = temp.next) {
             System.out.print("[ " + temp.name + " ] -> ");
@@ -111,18 +111,18 @@ public class ListaSimple {
     }
 
     // Method to delete the first node in the list
-    public void borrarPrimerNodo() {
+    public void deleteFirstNode() {
         // Move the top pointer to the next node, effectively deleting the first node
         this.top = this.top.next;
     }
 
     // Method to delete any node other than the first
-    public boolean borrarCualquierNodo(String buscado) {
+    public boolean deleteAnyNode(String searchName) {
         // Start from the top
         Node temp = this.top;
 
         // Traverse the list to find the node with the specified name
-        while (temp != null && !temp.name.equals(buscado)) {
+        while (temp != null && !temp.name.equals(searchName)) {
             temp = temp.next;
         }
 
